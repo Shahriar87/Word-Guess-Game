@@ -16,7 +16,7 @@ var guessesLeft = 13;
 var wins = 0;
 // var losses = 0;
 var listOfChoices = [];
-var blanks = [];
+var dash = [];
 var computerGuess ;
 
 
@@ -29,15 +29,14 @@ function compGuess(){
     for (var i=0; i < computerGuess.length; i++){
         
         if (computerGuess[i] == ' ') {
-            blanks.push(' ');
+            dash.push(' ');
         } else {
-            blanks.push('-');
+            dash.push('-');
         }
     }
 
-        // console.log(blanks)
-
-    
+    document.getElementById("word").textContent = dash;
+  
 };
 
 compGuess()
@@ -47,24 +46,26 @@ compGuess()
 
 
 document.onkeyup = function hangman(event) {
-    
     var userChoice = event.key;
-     
-    guessesLeft --
-    listOfChoices.push(userChoice);
 
-    // console.log(listOfChoices);
+    gameStart();
+
+
+}
+    
+     
+    
+
 
     function replaceDash(){
         for (var i = 0; i < computerGuess.length; i++) {
             
             if (userChoice === computerGuess.charAt(i)) {
                 
-                blanks[i] = userChoice;
+                dash[i] = userChoice;
                
-                document.getElementById("word").innerHTML = blanks.join('');
+                document.getElementById("word").innerHTML = dash.join('');
 
-                console.log()
                 
                 // Check to see if the player has won or lost
                 // hangman.checkWinLose();
@@ -73,26 +74,25 @@ document.onkeyup = function hangman(event) {
     };
 
 
+    function checkGame() {
+
+        if (userChoice === computerGuess)
 
 
-      
-    for (var i=0; i < computerGuess.length; i++){
 
-        if (userChoice !== computerGuess[i]){
-            var flag = false;
-        } else if (userChoice === computerGuess[i]){
-            flag = true;
-        }
-
-    } 
-
-    if (flag === false){
-        guessesLeft --;
-        listOfChoices.push(userChoice);
-    } if (flag === true){
-        replaceDash()
     }
 
+
+
+    
+
+
+
+
+
+
+
+    
 
 
 
@@ -120,4 +120,4 @@ document.onkeyup = function hangman(event) {
 
 
 
-};
+;
