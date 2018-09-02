@@ -1,5 +1,5 @@
 
-var wordBandName1 = "METALLICA".split('');
+var wordBandName1 = "METALLICA".split('');          
 var wordBandName2 = "MEGADETH".split('');
 var wordBandName3 = "BLACK SABBATH".split('');
 var wordBandName4 = "IRON MAIDEN".split('');
@@ -14,19 +14,34 @@ var computerWords = [wordBandName1, wordBandName2, wordBandName3, wordBandName4,
 
 var guessesLeft = 13;
 var wins = 0;
-// var losses = 0;
 var listOfChoices = [];
 var dash = [];
 var computerGuess = [];
+var keyInputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ".split('');
+
+var getGuess = document.getElementById("guess");
+var getUserText = document.getElementById("user-text");
+var getWord = document.getElementById("word");
+var getResult = document.getElementById("result");
+var getWin = document.getElementById("win");
+
+getGuess.textContent = guessesLeft;
+getUserText.textContent = ":";
 
 
-  
-function compGuess(){
+
+
+
+function compGuess(){            // Reset the Game
+    
+    guessesLeft = 13;
+    listOfChoices = []; 
+    dash = [];
     computerGuess = computerWords[Math.floor(Math.random()* computerWords.length)];
 
     console.log(computerGuess)
 
-    for (var i=0; i < computerGuess.length; i++){
+    for (var i=0; i < computerGuess.length; i++){           // Replace word letters with Dashes
         
         if (computerGuess[i] == ' ') {
             dash.push(' ');
@@ -35,92 +50,71 @@ function compGuess(){
         }
     }
 
-    document.getElementById("word").textContent = dash;
+    getWord.textContent = dash.join('');
   
 };
 
-compGuess()
 
+compGuess(); 
 
 
 
 
 document.onkeyup = function hangman(event) {
-    var userChoice = event.key;
+    getResult.textContent = ":";
+    var userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
+    
 
-    function checkGame() {
+    if (keyInputs.indexOf(userChoice) > -1){         // This limits the keys into Letters and Space from "keyInputs" array
 
-        if (computerGuess.indexOf(userChoice) > -1){
-            replaceDash()
-        } else {
-            guessesLeft --;
-            listOfChoices.push(userChoice);
+        checkGame();
 
-        }
+        function checkGame() {
+     
+            if (computerGuess.indexOf(userChoice) > -1){        // If user input exists in word, it replace dashes with letters
+                replaceDash()
 
-    }
 
-    function replaceDash(){
-        for (var i = 0; i < computerGuess.length; i++) {
+            } else if (guessesLeft > 0){                        // Else, reduce guess by 1
+                guessesLeft --;
+                listOfChoices.push(userChoice);             
+            }    
+            getUserText.textContent = listOfChoices;       
             
-            if (userChoice === computerGuess.charAt(i)) {
-                
-                dash[i] = userChoice;
-               
-                document.getElementById("word").innerHTML = dash.join('');
+        }
+   
 
+        function replaceDash(){                                 // reduce dashes with letters
+            for (var i = 0; i < computerGuess.length; i++) {
                 
-                // Check to see if the player has won or lost
-                // hangman.checkWinLose();
+                if (userChoice === computerGuess[i]) {
+                    
+                    dash[i] = userChoice;
+                
+                    getWord.textContent = dash.join('');
+
+                    
+                }
             }
         }
-    }
 
-
-    
-
-    document.getElementById("win").textContent = wins;
-    // document.getElementById("word").textContent = losses;
-    document.getElementById("guess").textContent = guessesLeft;
-    document.getElementById("user-text").textContent = listOfChoices;
-
-};
-
-    
-
-
-
-    
-
-
-
-
-
-
-
-    
-
-
-
-
-// if (guessesLeft === 0){
-//         losses ++;
-//         guessesLeft = 13; 
-//         listOfChoices = [];
-//         compGuess();
-
-//     } if (userChoice === computerGuess){
-//         wins ++;
-//         guessesLeft = 13; 
-//         listOfChoices = [];
-//         compGuess();
-//     } 
-
-  
-
+        if (dash.indexOf('-')===-1){                            // Winning!
+            getResult.innerHTML = "You Win!"; 
+            wins ++;        
+            compGuess();
+        }
         
+        if (guessesLeft===0){
+            getResult.innerHTML = "You Lose! <br/> Game Reset.";                // Losing!
+            wins = 0;       
+            compGuess();
+        }
 
 
-
+        getWin.textContent = wins;
+        getGuess.textContent = guessesLeft;
+        
+    }
+};
 
 
