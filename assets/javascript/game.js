@@ -17,14 +17,14 @@ var wins = 0;
 // var losses = 0;
 var listOfChoices = [];
 var dash = [];
-var computerGuess ;
+var computerGuess = [];
 
 
   
 function compGuess(){
     computerGuess = computerWords[Math.floor(Math.random()* computerWords.length)];
 
-    // console.log(computerGuess)
+    console.log(computerGuess)
 
     for (var i=0; i < computerGuess.length; i++){
         
@@ -48,14 +48,17 @@ compGuess()
 document.onkeyup = function hangman(event) {
     var userChoice = event.key;
 
-    gameStart();
+    function checkGame() {
 
+        if (computerGuess.indexOf(userChoice) > -1){
+            replaceDash()
+        } else {
+            guessesLeft --;
+            listOfChoices.push(userChoice);
 
-}
-    
-     
-    
+        }
 
+    }
 
     function replaceDash(){
         for (var i = 0; i < computerGuess.length; i++) {
@@ -71,16 +74,19 @@ document.onkeyup = function hangman(event) {
                 // hangman.checkWinLose();
             }
         }
-    };
-
-
-    function checkGame() {
-
-        if (userChoice === computerGuess)
-
-
-
     }
+
+
+    
+
+    document.getElementById("win").textContent = wins;
+    // document.getElementById("word").textContent = losses;
+    document.getElementById("guess").textContent = guessesLeft;
+    document.getElementById("user-text").textContent = listOfChoices;
+
+};
+
+    
 
 
 
@@ -110,14 +116,11 @@ document.onkeyup = function hangman(event) {
 //         compGuess();
 //     } 
 
-    document.getElementById("win").textContent = wins;
-    document.getElementById("word").textContent = losses;
-    document.getElementById("guess").textContent = guessesLeft;
-    document.getElementById("user-text").textContent = listOfChoices;
+  
 
         
 
 
 
 
-;
+
