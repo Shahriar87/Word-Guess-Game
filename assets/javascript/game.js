@@ -38,16 +38,24 @@ var img0 = "assets/images/Hangman miss9.png";
 
 var img = [img0, img1, img2, img3, img4, img5, img6, img7, img8];
 
+var playList = {
+    'song_1' : 'audio/splat.mp3',
+    'song_2' : 'audio/saw.mp3',
+    'song_3' : 'audio/marbles.mp3',
+    'song_4' : 'audio/seagulls.mp3',
+    'song_5' : 'audio/plane.mp3'
+}
+
 getGuess.textContent = guessesLeft;
 getUserText.textContent = ":";
 
+getImg.src="assets/images/Hangman Empty.png";
 
 
 
 
 function compGuess(){            // Reset the Game
 
-    // getImg.src="assets/images/Hangman Empty.png"
     guessesLeft = 9;
     listOfChoices = []; 
     dash = [];
@@ -81,6 +89,7 @@ compGuess();
 
 
 document.onkeyup = function hangman(event) {
+
     getResult.textContent = ":";
     var userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
     
@@ -93,7 +102,7 @@ document.onkeyup = function hangman(event) {
      
             if (computerGuess.indexOf(userChoice) > -1){        // If user input exists in word, it replace dashes with letters
                 replaceDash()
-
+                changeImg();
 
             } else if (guessesLeft > 0){                        // Else, reduce guess by 1
                 guessesLeft --;
@@ -119,30 +128,37 @@ document.onkeyup = function hangman(event) {
             }
         }
 
-        function changeImg(){
+        function changeImg(){                                   // Hangman Image
             var j = guessesLeft;
-            getImg.src=img[j];
+
+            if (guessesLeft ===9){
+                getImg.src="assets/images/Hangman Empty.png";
+            } else {
+                getImg.src=img[j];
+            }
         }
 
         if (dash.indexOf('-')===-1){                            // Winning!
             getResult.innerHTML = "You Win!"; 
-            wins ++;        
-            // startGame();
+            wins ++;   
+            playMusic();  
+            getImg.src="https://media.giphy.com/media/XJWmSs8ZvCZCDs3MDt/giphy.gif";   
             compGuess();
         }
         
         if (guessesLeft===0){
             getResult.innerHTML = "You Lose! <br/> Game Reset.";                // Losing!
             wins = 0;       
-            // startGame();
             compGuess();
         }
-
 
         getWin.textContent = wins;
         getGuess.textContent = guessesLeft;
         
     }
 };
+
+
+
 
 
