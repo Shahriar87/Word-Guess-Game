@@ -26,30 +26,23 @@ var getResult = document.getElementById("result");
 var getWin = document.getElementById("win");
 var getImg = document.getElementById("hangmanImg");
 
-var img8 = "assets/images/Hangman miss1.png";
-var img7 = "assets/images/Hangman miss2.png";
-var img6 = "assets/images/Hangman miss3.png";
-var img5 = "assets/images/Hangman miss4.png";
-var img4 = "assets/images/Hangman miss5.png";
-var img3 = "assets/images/Hangman miss6.png";
-var img2 = "assets/images/Hangman miss7.png";
-var img1 = "assets/images/Hangman miss8.png";
-var img0 = "assets/images/Hangman miss9.png";
+var img8 = "assets/images/Hangman miss1.jpg";
+var img7 = "assets/images/Hangman miss2.jpg";
+var img6 = "assets/images/Hangman miss3.jpg";
+var img5 = "assets/images/Hangman miss4.jpg";
+var img4 = "assets/images/Hangman miss5.jpg";
+var img3 = "assets/images/Hangman miss6.jpg";
+var img2 = "assets/images/Hangman miss7.jpg";
+var img1 = "assets/images/Hangman miss8.jpg";
+var img0 = "assets/images/Hangman miss9.jpg";
 
 var img = [img0, img1, img2, img3, img4, img5, img6, img7, img8];
 
-var playList = {
-    'song_1' : 'audio/splat.mp3',
-    'song_2' : 'audio/saw.mp3',
-    'song_3' : 'audio/marbles.mp3',
-    'song_4' : 'audio/seagulls.mp3',
-    'song_5' : 'audio/plane.mp3'
-}
 
 getGuess.textContent = guessesLeft;
 getUserText.textContent = ":";
 
-getImg.src="assets/images/Hangman Empty.png";
+getImg.src="assets/images/Hangman Empty.jpg";
 
 
 
@@ -132,7 +125,7 @@ document.onkeyup = function hangman(event) {
             var j = guessesLeft;
 
             if (guessesLeft ===9){
-                getImg.src="assets/images/Hangman Empty.png";
+                getImg.src="assets/images/Hangman Empty.jpg";
             } else {
                 getImg.src=img[j];
             }
@@ -141,8 +134,7 @@ document.onkeyup = function hangman(event) {
         if (dash.indexOf('-')===-1){                            // Winning!
             getResult.innerHTML = "You Win!"; 
             wins ++;   
-            playMusic();  
-            getImg.src="https://media.giphy.com/media/XJWmSs8ZvCZCDs3MDt/giphy.gif";   
+            getImg.src="https://media.giphy.com/media/nydq4W7ymEzr4InzHv/giphy.gif";   
             compGuess();
         }
         
