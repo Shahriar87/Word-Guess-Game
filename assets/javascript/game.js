@@ -38,6 +38,18 @@ var img0 = "assets/images/Hangman miss9.jpg";
 
 var img = [img0, img1, img2, img3, img4, img5, img6, img7, img8];
 
+var audio1 = new Audio("http://sd-1.archive-host.com/membres/playlist/20775449874745885/02-Masterofpuppets.mp3");
+var audio2 = new Audio("http://crovaxx.free.fr/Megadeth%20-%20Trust.mp3");
+var audio3 = new Audio("http://cthulhu22.free.fr/Black%20Sabbath-Iron%20Man%20The%20Best%20of%20Black%20Sabbath-2012-GRAVEWISH/01-black_sabbath-paranoid.mp3");
+var audio4 = new Audio("http://digidownload.libero.it/solohtml/musica/fear%20of.mp3");
+var audio5 = new Audio("http://mp3serveur66.free.fr/Musique/Death%20Metal/Slayer/1996/Reign%20in%20Blood/Raining%20Blood.mp3");
+var audio6 = new Audio("http://s1.faz-dl3.ir/Ali/music/aban/Anthrax%20-%20Evil%20Twin%28320%29.mp3");
+var audio7 = new Audio("https://a.tumblr.com/tumblr_magdmmZHrP1qdg6sho1.mp3");
+var audio8 = new Audio("http://www.deanguitars.tv/mp3s/deanradio/8.%20Dean%20Artist%20-%20Dimebag%20Darrell%20of%20Pantera%20-%20%20Cowboys%20From%20Hell.mp3");
+var audio9 = new Audio("http://metaaaal.free.fr/Divers/Sepultura%20-%20Arise.mp3");
+var audio10 = new Audio("http://www.deanguitars.tv/mp3s/deanradio/4.%20Michael%20Angelo%20Batio%20-%20BURN%20-%20Deep%20Purple.mp3");
+
+
 
 getGuess.textContent = guessesLeft;
 getUserText.textContent = ":";
@@ -131,9 +143,69 @@ document.onkeyup = function hangman(event) {
             }
         }
 
+        function stopAudios(){              // Function to stop audios
+            audio1.pause();
+            audio2.pause();
+            audio3.pause();
+            audio4.pause();
+            audio5.pause();
+            audio6.pause();
+            audio7.pause();
+            audio8.pause();
+            audio9.pause();
+            audio10.pause();
+        }
+
+        function playAudios(){
+            switch (computerGuess.join("")){     //Function to play audios
+                case "METALLICA":
+                    stopAudios();
+                    audio1.play();
+                    break;
+                case "MEGADETH":
+                    stopAudios();
+                    audio2.play();
+                    break;
+                case "BLACK SABBATH":
+                    stopAudios();
+                    audio3.play();
+                    break;
+                case "IRON MAIDEN":
+                    stopAudios();
+                    audio4.play();
+                    break;
+                case "SLAYER":
+                    stopAudios();
+                    audio5.play();
+                    break;
+                case "ANTHRAX":
+                    stopAudios();
+                    audio6.play();
+                    break;
+                case "EXODUS":
+                    stopAudios();
+                    audio7.play();
+                    break;
+                case "PANTERA":
+                    stopAudios();
+                    audio8.play();
+                    break;
+                case "SEPULTURA":
+                    stopAudios();
+                    audio9.play();
+                    break;
+                case "DEEP PURPLE":
+                    stopAudios();
+                    audio10.play();
+                    break;
+            }
+
+        };
+
         if (dash.indexOf('-')===-1){                            // Winning!
             getResult.innerHTML = "You Win!"; 
             wins ++;   
+            playAudios();
             getImg.src="https://media.giphy.com/media/nydq4W7ymEzr4InzHv/giphy.gif";   
             compGuess();
         }
