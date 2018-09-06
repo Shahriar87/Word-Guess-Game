@@ -8,7 +8,7 @@ var wordBandName6 = "ANTHRAX".split('');
 var wordBandName7 = "EXODUS".split('');
 var wordBandName8 = "PANTERA".split('');
 var wordBandName9 = "SEPULTURA".split('');
-var wordBandName10 = "DEEP PURPLE".split('');
+var wordBandName10 = "DREAM THEATER".split('');
 
 var computerWords = [wordBandName1, wordBandName2, wordBandName3, wordBandName4, wordBandName5, wordBandName6, wordBandName7, wordBandName8, wordBandName9, wordBandName10];
 
@@ -17,14 +17,16 @@ var wins = 0;
 var listOfChoices = [];
 var dash = [];
 var computerGuess = [];
-var keyInputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ".split('');
+var keyInputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split('');
 
+var getStart = document.getElementById("start");
 var getGuess = document.getElementById("guess");
 var getUserText = document.getElementById("user-text");
 var getWord = document.getElementById("word");
 var getResult = document.getElementById("result");
 var getWin = document.getElementById("win");
 var getImg = document.getElementById("hangmanImg");
+var getFooter = document.getElementById("currentSong");
 
 var img8 = "assets/images/Hangman miss1.jpg";
 var img7 = "assets/images/Hangman miss2.jpg";
@@ -47,7 +49,7 @@ var audio6 = new Audio("http://s1.faz-dl3.ir/Ali/music/aban/Anthrax%20-%20Evil%2
 var audio7 = new Audio("https://a.tumblr.com/tumblr_magdmmZHrP1qdg6sho1.mp3");
 var audio8 = new Audio("http://www.deanguitars.tv/mp3s/deanradio/8.%20Dean%20Artist%20-%20Dimebag%20Darrell%20of%20Pantera%20-%20%20Cowboys%20From%20Hell.mp3");
 var audio9 = new Audio("http://metaaaal.free.fr/Divers/Sepultura%20-%20Arise.mp3");
-var audio10 = new Audio("http://www.deanguitars.tv/mp3s/deanradio/4.%20Michael%20Angelo%20Batio%20-%20BURN%20-%20Deep%20Purple.mp3");
+var audio10 = new Audio("http://articfox.free.fr/mp3/Dream%20Theater/dreamtheater%20-%20Images_and_Words/01%20Pull%20me%20under.mp3");
 
 
 
@@ -81,21 +83,16 @@ function compGuess(){            // Reset the Game
   
 };
 
-// document.onkeyup = function startGame(event){
-//     var keyStart = event.keyCode;
-//     if (ketStart === 32){
-//         compGuess(); 
-//     }
-    
-// }
 
-compGuess(); 
-
+document.addEventListener('keyup', function startGame(event) {             //Press any key to start the game (once)!
+    getStart.style.display = "none";
+    compGuess();
+}, {once: true});
 
 
 document.onkeyup = function hangman(event) {
 
-    getResult.textContent = ":";
+    getResult.textContent = "";
     var userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
     
 
@@ -143,6 +140,7 @@ document.onkeyup = function hangman(event) {
             }
         }
 
+
         function stopAudios(){              // Function to stop audios
             audio1.pause();
             audio2.pause();
@@ -157,53 +155,72 @@ document.onkeyup = function hangman(event) {
         }
 
         function playAudios(){
-            switch (computerGuess.join("")){     //Function to play audios
+            switch (computerGuess.join("")){     //Function to play audios & show current song name
                 case "METALLICA":
                     stopAudios();
                     audio1.play();
+                    getFooter.innerHTML = "Now Playing: Master Of Puppets - Metallica";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://images-na.ssl-images-amazon.com/images/I/91pHIsMbZpL._SY355_.jpg style=width:130px; height:130px;/>";
                     break;
                 case "MEGADETH":
                     stopAudios();
                     audio2.play();
+                    getFooter.innerHTML = "Now Playing: Trust - Megadeth";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://s3.amazonaws.com/images.sheetmusicdirect.com/Album/b2d4c16d-7b7a-4365-ad0e-9f24d32c8378/large.jpg style=width:130px; height:130px;/>";
                     break;
                 case "BLACK SABBATH":
                     stopAudios();
                     audio3.play();
+                    getFooter.innerHTML = "Now Playing: Paranoid - Black Sabbath ";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://images-na.ssl-images-amazon.com/images/I/712nD2NH-zL._SL1425_.jpg style=width:130px; height:130px;/>";
                     break;
                 case "IRON MAIDEN":
                     stopAudios();
                     audio4.play();
+                    getFooter.innerHTML = "Now Playing: Fear Of The Dark - Iron Maiden";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = http://musicfearsatan.com/wp-content/uploads/2017/06/ironmaiden_fear.jpg style=width:130px; height:130px;/>";
                     break;
                 case "SLAYER":
                     stopAudios();
                     audio5.play();
+                    getFooter.innerHTML = "Now Playing: Raining Blood - Slayer";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://i.ytimg.com/vi/z8ZqFlw6hYg/hqdefault.jpg style=width:130px; height:130px;/>";
                     break;
                 case "ANTHRAX":
                     stopAudios();
                     audio6.play();
+                    getFooter.innerHTML = "Now Playing: Evil Twins - Anthrax";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://tshirtslayer.com/files-tshirt/styles/shirtviewbottom/public/user-14692/ee34c4eaf47b0daef9ebc722a5440ae3.jpg?itok=okOiBRtF style=width:130px; height:130px;/>";
                     break;
                 case "EXODUS":
                     stopAudios();
                     audio7.play();
+                    getFooter.innerHTML = "Now Playing: Blacklist- Exodus";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://images.genius.com/433d812894472fa5e77ab4ed566f1a28.1000x1000x1.jpg style=width:130px; height:130px;/>";
                     break;
                 case "PANTERA":
                     stopAudios();
                     audio8.play();
+                    getFooter.innerHTML = "Now Playing: Cowboys From Hell - Pantera";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://images-na.ssl-images-amazon.com/images/I/91gDINDQ7sL._SL1425_.jpg style=width:130px; height:130px;/>";
                     break;
                 case "SEPULTURA":
                     stopAudios();
                     audio9.play();
+                    getFooter.innerHTML = "Now Playing: Arise - Sepultura";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://img.discogs.com/gP6kZNqJZdms3hqbyYZP_01HDQs=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-1887496-1308953876.jpeg.jpg style=width:130px; height:130px;/>";
                     break;
-                case "DEEP PURPLE":
+                case "DREAM THEATER":
                     stopAudios();
                     audio10.play();
+                    getFooter.innerHTML = "Now Playing: Pull Me Under - Dream Theater";
+                    getResult.innerHTML = "You Win! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src = https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Cover_of_the_single_Pull_me_under_from_Dream_Theater.jpeg/220px-Cover_of_the_single_Pull_me_under_from_Dream_Theater.jpeg style=width:130px; height:130px;/>";
                     break;
             }
 
         };
 
-        if (dash.indexOf('-')===-1){                            // Winning!
-            getResult.innerHTML = "You Win!"; 
+        if (dash.indexOf('-')===-1){                            // Winning! 
             wins ++;   
             playAudios();
             getImg.src="https://media.giphy.com/media/nydq4W7ymEzr4InzHv/giphy.gif";   

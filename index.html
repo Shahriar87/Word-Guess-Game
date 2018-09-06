@@ -38,39 +38,38 @@
             </div>
             <div class="col-lg-4">
                 <div class="card" style="width: 18rem;">
-                        <!-- https://media.giphy.com/media/1AeQ2w89GsPvghZtu7/giphy.gif -->
-                        <!-- https://media.giphy.com/media/XJWmSs8ZvCZCDs3MDt/giphy.gif -->
                     <img class="card-img-top" id="hangmanImg" alt="Headbang"/>
                 </div>
             </div>
             <div class="col-lg-4 border border-white">
 
-                <p>Guess the 90's metal band name</p>
+                <h4>Guess the 90's Heavy Metal Band name</h4>
 
-                <p>Wins: <span id="win"> </span></p>
+                <div>
+                    <p id="start">Press any key to get started!...</p>
+                </div>
+
+                <div>
+                    <p>Wins: <span id="win"> </span></p>
+                </div>
 
                 <div>
 
-                    <p>Current Word </p>
-
-                    <div><span id="word">:</span></div>
+                    <p>Current Band: <span id="word"></span></p>
 
                 </div>
                 
 
-                <!-- <p>Losses: <span id="loss"></span></p> -->
 
                 <div>
 
-                    <p>Number of Guesses Remaining</p>
-
-                    <div><span id="guess">:</span></div>
+                    <p>Number of Guesses Remaining: <span id="guess"></span></p>
 
                 </div>
 
                 <div>
 
-                    <p>Letters Already Guessed</p>
+                    <p>Incorrect Letters Already Guessed</p>
 
                     <div><span id="user-text"></span></div>
 
@@ -78,9 +77,7 @@
 
                 <div>
 
-                    <p>Result</p>
-
-                    <div><span id="result">:</span></div>
+                    <div><span id="result"></span></div>
 
                 </div>
 
@@ -89,9 +86,18 @@
             <div class="col-lg-2">
 
             </div>
-
-        </div> 
+        </div>
     </div>
+
+    <footer class="bg-alert text-white mt-5 border-top border-info">
+        <div class="container-fluid py-3">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <span id="currentSong"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
     

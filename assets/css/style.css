@@ -4,3 +4,20 @@ body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
     
 }
+
+
+#start {
+    opacity: 0;
+    animation: blinking 1s linear infinite;
+  }
+  
+@keyframes blinking {
+    from,
+    49.9% {
+      opacity: 0;
+    }
+    50%,
+    to {
+      opacity: 1;
+    }
+  }
