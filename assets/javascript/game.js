@@ -228,7 +228,7 @@ document.onkeyup = function hangman(event) {
         }
         
         if (guessesLeft===0){
-            getResult.innerHTML = "You Lose! <br/> Game Reset.";                // Losing!
+            getResult.innerHTML = "You Lose! <br/> Game Reset. <br/> Correct Band Name was: " + computerGuess.join("");                // Losing!
             wins = 0;       
             compGuess();
         }
