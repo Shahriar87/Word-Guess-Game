@@ -101,7 +101,12 @@ document.onkeyup = function hangman(event) {
         checkGame();
 
         function checkGame() {
-     
+
+           // if (listOfChoices.indexOf(userChoice) > -1){       // This will activate pressing the same incorrect letter only once. But I dont want this activated. I want user to be press same letter as many times as user wanrs to miss chances.
+
+          //  } else {
+
+                
             if (computerGuess.indexOf(userChoice) > -1){        // If user input exists in word, it replace dashes with letters
                 replaceDash()
                 changeImg();
@@ -111,7 +116,14 @@ document.onkeyup = function hangman(event) {
                 changeImg();
                 listOfChoices.push(userChoice);             
             }    
-            getUserText.textContent = listOfChoices;       
+            getUserText.textContent = listOfChoices;   
+
+          //  }
+
+
+
+
+         
             
         }
    
