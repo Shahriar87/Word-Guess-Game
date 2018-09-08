@@ -5,6 +5,12 @@ body {
     
 }
 
+#title{
+  width: 745px;
+  height: 350px;
+
+}
+
 
 #start {
     opacity: 0;
@@ -23,10 +29,10 @@ body {
   }
 
 
-  /* @media only screen and (max-width: 640px) {
+@media only screen and (max-width: 1024px) {
+  #title{
+    width: 100%;
+    height: auto;
+  }
 
-    #title{
-      width: 100%;
-    }
-
-} */
+}

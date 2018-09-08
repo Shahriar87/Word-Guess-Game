@@ -102,7 +102,7 @@ document.onkeyup = function hangman(event) {
 
         function checkGame() {
 
-           // if (listOfChoices.indexOf(userChoice) > -1){       // This will activate pressing the same incorrect letter only once. But I dont want this activated. I want user to be press same letter as many times as user wanrs to miss chances.
+           // if (listOfChoices.indexOf(userChoice) > -1){       // This will activate pressing the same incorrect letter only once. But I dont want this activated. I want user to press same letter as many times as user wanrs to miss chances.
 
           //  } else {
 
