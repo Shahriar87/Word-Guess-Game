@@ -54,7 +54,7 @@ var audio10 = new Audio("http://articfox.free.fr/mp3/Dream%20Theater/dreamtheate
 
 
 getGuess.textContent = guessesLeft;
-getUserText.textContent = ":";
+// getUserText.textContent = ":";
 
 getImg.src="assets/images/Hangman Empty.jpg";
 
@@ -84,16 +84,22 @@ function compGuess(){            // Reset the Game
 };
 
 
+
+
+
 document.addEventListener('keyup', function startGame(event) {             //Press any key to start the game (once)!
     getStart.style.display = "none";
     compGuess();
 }, {once: true});
 
 
+var userChoice;
+    
 document.onkeyup = function hangman(event) {
 
     getResult.textContent = "";
-    var userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
+    userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
+    
     
 
     if (keyInputs.indexOf(userChoice) > -1){         // This limits the keys into Letters and Space from "keyInputs" array
