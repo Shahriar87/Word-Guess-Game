@@ -95,9 +95,10 @@ document.addEventListener('keyup', function startGame(event) {             //Pre
     compGuess();
 }, {once: true});
 
+// document.onkeyup = function hangman(event) {
 
     
-document.onkeyup = function hangman(event) {
+document.addEventListener('keyup', function hangman(event) {
 
     getResult.textContent = "";
     userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
@@ -263,7 +264,7 @@ document.onkeyup = function hangman(event) {
         getGuess.textContent = guessesLeft;
         
     }
-};
+});
 
 
 
