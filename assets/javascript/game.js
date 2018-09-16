@@ -22,6 +22,7 @@ var keyInputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split('')
 var getStart = document.getElementById("start");
 var getGuess = document.getElementById("guess");
 var getUserText = document.getElementById("user-text");
+var getLeftGuesses = document.getElementById("leftGuesses")
 var getWord = document.getElementById("word");
 var getResult = document.getElementById("result");
 var getWin = document.getElementById("win");
@@ -80,12 +81,14 @@ function compGuess(){            // Reset the Game
     }
 
     getWord.textContent = dash.join('');
+
   
 };
 
+var userChoice 
 
 
-
+   
 
 document.addEventListener('keyup', function startGame(event) {             //Press any key to start the game (once)!
     getStart.style.display = "none";
@@ -93,14 +96,16 @@ document.addEventListener('keyup', function startGame(event) {             //Pre
 }, {once: true});
 
 
-var userChoice;
     
 document.onkeyup = function hangman(event) {
 
     getResult.textContent = "";
     userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
     
+    // userChoice = getUserText.value.slice(-1).toUpperCase(); 
+    getUserText.value = "";
     
+    console.log(userChoice) ;  
 
     if (keyInputs.indexOf(userChoice) > -1){         // This limits the keys into Letters and Space from "keyInputs" array
 
@@ -122,7 +127,8 @@ document.onkeyup = function hangman(event) {
                 changeImg();
                 listOfChoices.push(userChoice);             
             }    
-            getUserText.textContent = listOfChoices;   
+            // getUserText.textContent = listOfChoices;   
+            getLeftGuesses.textContent = listOfChoices;
 
           //  }
 
@@ -237,6 +243,8 @@ document.onkeyup = function hangman(event) {
             }
 
         };
+
+
 
         if (dash.indexOf('-')===-1){                            // Winning! 
             wins ++;   

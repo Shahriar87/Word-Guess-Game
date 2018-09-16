@@ -8,30 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/onScreenKeyboard.css" />
-
-    <style>
-        html {
-            font-family: Calibri, Arial, sans-serif;
-        }
-        #input_container {
-            width: 50%;
-            margin: 2% auto;
-            display: block;
-        }
-        #input_container > input,
-        #input_container > textarea {
-            font-family: inherit;
-            font-size: 18px;
-            width: 98%;
-            display: block;
-            resize: none;
-            margin-bottom: 1em;
-            border: 1px solid #333;
-            padding: 0.25em;
-            background: #FEFEFE;
-        }
-    </style>
-    
+ 
 
 </head>
 <body>
@@ -94,10 +71,10 @@
 
                     <p>Incorrect Letters Already Guessed</p>
 
-                    <!-- <div><span id="user-text"></span></div> -->
+                    <div><span id="leftGuesses"></span></div>
 
                     <form id="input_container" action="demo.html">
-                        <textarea  id="user-text"></textarea>
+                        <textarea  id="user-text" style="width: 60px; height: 22px"></textarea>
                     </form>
 
                 </div>
@@ -133,22 +110,10 @@
     
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="assets/javascript/jquery.onScreenKeyboard.js"></script>
-    <script>
-        $(function () {
-				$('#input_container').children('#user-text').onScreenKeyboard({
-					rewireReturn : 'submit',
-                    rewireTab : true,
-                    draggable: true
-				});
-			});
-    </script>
-
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 
     
 
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
 
 
 

@@ -11,11 +11,33 @@ body {
 
 }
 
-
 #start {
     opacity: 0;
     animation: blinking 1s linear infinite;
   }
+
+
+#input_container {
+    width: 50%;
+    margin: 2% auto;
+    display: block;
+}
+#input_container > input,
+#input_container > textarea {
+    font-family: inherit;
+    font-size: 18px;
+    width: 98%;
+    display: none;
+    resize: none;
+    margin-bottom: 1em;
+    border: 1px solid #333;
+    padding: 0.25em;
+    background: #FEFEFE;
+}
+
+
+
+
   
 @keyframes blinking {
     from,
@@ -34,5 +56,12 @@ body {
     width: 100%;
     height: auto;
   }
+
+  #input_container > textarea {
+    display: block;
+    
+}
+
+
 
 }
