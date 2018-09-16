@@ -101,9 +101,9 @@ document.addEventListener('keyup', function startGame(event) {             //Pre
 document.addEventListener('keyup', function hangman(event) {
 
     getResult.textContent = "";
-    userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
+    // userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
     
-    // userChoice = getUserText.value.slice(-1).toUpperCase(); 
+    userChoice = getUserText.value.slice(-1).toUpperCase(); 
     getUserText.value = "";
     
     console.log(userChoice) ;  
