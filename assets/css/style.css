@@ -11,6 +11,10 @@ body {
 
 }
 
+#instruction{
+  color: red;
+}
+
 #start {
     opacity: 0;
     animation: blinking 1s linear infinite;
