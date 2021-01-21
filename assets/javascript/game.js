@@ -1,5 +1,5 @@
 
-var wordBandName1 = "METALLICA".split('');          
+var wordBandName1 = "METALLICA".split('');
 var wordBandName2 = "MEGADETH".split('');
 var wordBandName3 = "BLACK SABBATH".split('');
 var wordBandName4 = "IRON MAIDEN".split('');
@@ -65,14 +65,14 @@ getImg.src="assets/images/Hangman Empty.jpg";
 function compGuess(){            // Reset the Game
 
     guessesLeft = 9;
-    listOfChoices = []; 
+    listOfChoices = [];
     dash = [];
     computerGuess = computerWords[Math.floor(Math.random()* computerWords.length)];
 
     console.log(computerGuess)
 
     for (var i=0; i < computerGuess.length; i++){           // Replace word letters with Dashes
-        
+
         if (computerGuess[i] == ' ') {
             dash.push(' ');
         } else {
@@ -82,13 +82,13 @@ function compGuess(){            // Reset the Game
 
     getWord.textContent = dash.join('');
 
-  
+
 };
 
-var userChoice 
+var userChoice
 
 
-   
+
 
 document.addEventListener('keyup', function startGame(event) {             //Press any key to start the game (once)!
     getStart.style.display = "none";
@@ -97,16 +97,16 @@ document.addEventListener('keyup', function startGame(event) {             //Pre
 
 // document.onkeyup = function hangman(event) {
 
-    
+
 document.addEventListener('keyup', function hangman(event) {
 
     getResult.textContent = "";
     // userChoice = event.key.toUpperCase();     // Makes inputs Case insensitive
-    
-    userChoice = getUserText.value.slice(-1).toUpperCase(); 
+
+    userChoice = getUserText.value.slice(-1).toUpperCase();
     getUserText.value = "";
-    
-    console.log(userChoice) ;  
+
+    console.log(userChoice) ;
 
     if (keyInputs.indexOf(userChoice) > -1){         // This limits the keys into Letters and Space from "keyInputs" array
 
@@ -118,7 +118,7 @@ document.addEventListener('keyup', function hangman(event) {
 
           //  } else {
 
-                
+
             if (computerGuess.indexOf(userChoice) > -1){        // If user input exists in word, it replace dashes with letters
                 replaceDash()
                 changeImg();
@@ -126,9 +126,9 @@ document.addEventListener('keyup', function hangman(event) {
             } else if (guessesLeft > 0){                        // Else, reduce guess by 1
                 guessesLeft --;
                 changeImg();
-                listOfChoices.push(userChoice);             
-            }    
-            // getUserText.textContent = listOfChoices;   
+                listOfChoices.push(userChoice);
+            }
+            // getUserText.textContent = listOfChoices;
             getLeftGuesses.textContent = listOfChoices;
 
           //  }
@@ -136,21 +136,21 @@ document.addEventListener('keyup', function hangman(event) {
 
 
 
-         
-            
+
+
         }
-   
+
 
         function replaceDash(){                                 // reduce dashes with letters
             for (var i = 0; i < computerGuess.length; i++) {
-                
+
                 if (userChoice === computerGuess[i]) {
-                    
+
                     dash[i] = userChoice;
-                
+
                     getWord.textContent = dash.join('');
 
-                    
+
                 }
             }
         }
@@ -247,22 +247,22 @@ document.addEventListener('keyup', function hangman(event) {
 
 
 
-        if (dash.indexOf('-')===-1){                            // Winning! 
-            wins ++;   
+        if (dash.indexOf('-')===-1){                            // Winning!
+            wins ++;
             playAudios();
-            getImg.src="https://media.giphy.com/media/nydq4W7ymEzr4InzHv/giphy.gif";   
+            getImg.src="https://media.giphy.com/media/mBjulVQHWumozyk6O2/giphy.gif";
             compGuess();
         }
-        
+
         if (guessesLeft===0){
             getResult.innerHTML = "You Lose! <br/> Game Reset. <br/> Correct Band Name was: " + computerGuess.join("");                // Losing!
-            wins = 0;       
+            wins = 0;
             compGuess();
         }
 
         getWin.textContent = wins;
         getGuess.textContent = guessesLeft;
-        
+
     }
 });
 
